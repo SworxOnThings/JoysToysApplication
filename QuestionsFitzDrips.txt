@@ -1,0 +1,5 @@
+4:10 PM 1/14/2023
+
+What are we exactly to do? What is the scope of the project?
+
+Essentially the idea that I have so far is generating a database schema and slapping a GUI on top of it

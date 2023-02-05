@@ -1,0 +1,19 @@
+4:25 PM 1/29/2023
+
+First Normal Form:
+- have a primary key
+- strict datatypes
+- no multiple data entries per field/row
+- don't use row order to convey multiple pieces of information
+
+Second Normal Form:
+- each non-key attribute must depend on the entire primary key(you can have multiple fields be the primary key)
+
+Third Normal Form:
+- every non-key attribute MUST depend on the primary key only. A non-key cannot depend upon another non-key
+
+Fourth Normal Form:
+- Multivalued dependencies must only depend upon the key
+
+Fifth Normal Form:
+- if one table can be described with multiple tables(that is already in Fourth Normal Form) then it should be
