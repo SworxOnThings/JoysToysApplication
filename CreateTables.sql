@@ -29,7 +29,8 @@ CREATE TABLE Categories (
 CREATE TABLE Products (
 	Product_ID serial primary key,
 	Product_Name varchar(255),
-	Price numeric
+	Price numeric,
+	Quantity int
 );
 
 CREATE TABLE Products_Categories_Junction (
@@ -48,7 +49,7 @@ CREATE TABLE Suppliers (
 CREATE TABLE Delivery (
 	Delivery_ID serial primary key,
 	Delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
-	Supplier_ID references Suppliers(Supplier_ID)
+	Supplier_ID int references Suppliers(Supplier_ID)
 );
 
 CREATE TABLE Inventory_Order (
@@ -56,14 +57,14 @@ CREATE TABLE Inventory_Order (
 	Inventory_Order_date TIMESTAMP WITH TIME ZONE NOT NULL,
 	PurchasingPricePerUnit numeric,
 	Quantity int,
-	Delivery_ID references Delivery(Delivery_ID),
-	Product_ID references Products(Product_ID)
+	Delivery_ID int references Delivery(Delivery_ID),
+	Product_ID int references Products(Product_ID)
 );
 
 CREATE TABLE Inventory_Transactions (
 	Transaction_ID serial primary key,
 	Amount_paid numeric,
-	Inventory_Order_ID references Inventory_Order(Inventory_Order_ID)
+	Inventory_Order_ID int references Inventory_Order(Inventory_Order_ID)
 );
 
 CREATE TABLE Job_Role (
@@ -78,7 +79,7 @@ CREATE TABLE Employee (
 	email varchar(255),
 	Address varchar(255),
 	PhoneNumber varchar(255),
-	Bank_Account_No. int, 
+	Bank_Account_Number int, 
 	Hours_worked int,
-	Job_ID references Job_Role(Job_ID)
+	Job_ID int references Job_Role(Job_ID)
 );
