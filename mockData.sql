@@ -1,3 +1,4 @@
+
 /*
 INSERT INTO Customer values(DEFAULT ,'John', 'none@none.com', '123 somewhere st.', '543-555-2013');
 

@@ -1,0 +1,28 @@
+TODO:
+- Set up entities & repositories for the different tables in the backend(for the ones other than customer). Every table gets an entity, a repository, and possibly a controller. Then, in the controller, expose whatever APIs need to be exposed
+
+- research the 'one to many' and 'many to one' and 'many to many' relationships annotations in JPA
+
+- 3 things that need to work:
+    - Shop (no login required)
+    - Login
+    - Make Purchases
+
+- Shop
+    - pull all products from backend. Then display them on the site
+
+- Login
+    - create login portal
+    - research how to do authentication in spring(OAUTH2 probably)
+    - store login information(username, password hash, payment info, etc...)
+    - research what a bean is
+
+- Make Purchase
+    - payment processor
+    - generate a receipt
+    - decrement stock in backend
+    - send receipt to user
+    - display receipt/purchasing information to user
+
+
+- Build the front end
