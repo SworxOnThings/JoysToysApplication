@@ -26,7 +26,7 @@ public class CustomerOrder {
     @JsonIgnoreProperties("customerOrderList")
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "CustomerOrder")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "customerOrder")
     @JsonManagedReference
     private CustomerTransaction customerTransaction;
 
