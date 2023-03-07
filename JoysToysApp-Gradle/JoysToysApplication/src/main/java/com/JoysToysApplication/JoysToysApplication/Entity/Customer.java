@@ -31,6 +31,9 @@ public class Customer {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
     private List<PaymentInformation> paymentInformationList = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<CustomerOrder> customerOrderList = new ArrayList<>();
+
     public Customer() {
 
     }
