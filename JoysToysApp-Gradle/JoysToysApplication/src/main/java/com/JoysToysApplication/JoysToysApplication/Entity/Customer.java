@@ -1,5 +1,8 @@
-package com.JoysToysApplication.JoysToysApplication;
+package com.JoysToysApplication.JoysToysApplication.Entity;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * an entity is an object-oriented representation of a tuple of a database table.
@@ -13,7 +16,6 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long customer_id;
 
-
     @Column(name = "name")
     private String name;
 
@@ -25,6 +27,9 @@ public class Customer {
 
     @Column(name = "phonenumber")
     private String phonenumber;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<PaymentInformation> paymentInformationList = new ArrayList<>();
 
     public Customer() {
 

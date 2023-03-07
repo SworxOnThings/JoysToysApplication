@@ -1,4 +1,6 @@
-package com.JoysToysApplication.JoysToysApplication;
+package com.JoysToysApplication.JoysToysApplication.Controller;
+import com.JoysToysApplication.JoysToysApplication.Repository.CustomerRepository;
+import com.JoysToysApplication.JoysToysApplication.Entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +13,8 @@ import java.util.Optional;
 @RestController
 public class CustomerController {
 
-    @Autowired CustomerRepository customerRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
     //This is a PATH variable
     @GetMapping("/customer/{id}")

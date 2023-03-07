@@ -1,5 +1,6 @@
-package com.JoysToysApplication.JoysToysApplication;
+package com.JoysToysApplication.JoysToysApplication.Repository;
 
+import com.JoysToysApplication.JoysToysApplication.Entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 
