@@ -41,10 +41,11 @@ CREATE TABLE Products (
 );
 
 CREATE TABLE Customer_Order_Product_Association (
+	Customer_Order_Product_Association_id serial primary key,
 	Customer_Order_ID int references Customer_Order(Customer_Order_ID),
 	Product_ID int references Products(Product_ID),
-	Quantity int,
-	PRIMARY KEY (Customer_Order_ID, Product_ID)
+	UNIQUE(Customer_Order_ID, Product_ID),
+	Quantity int
 );
 
 CREATE TABLE Products_Categories_Junction (

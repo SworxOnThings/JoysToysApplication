@@ -1,22 +1,23 @@
 
+
+--INSERT INTO Customer values(DEFAULT ,'John', 'none@none.com', '123 somewhere st.', '543-555-2013');
+
+--INSERT INTO Payment_Information values(DEFAULT, '1234-4567-8900-0012', 1, 1);
+
+--INSERT INTO Categories values(DEFAULT, 'Toy Guns');
+
+--INSERT INTO Products values(DEFAULT, 'Super Nerf Blaster 9000', 20.00, 3);
+
 /*
-INSERT INTO Customer values(DEFAULT ,'John', 'none@none.com', '123 somewhere st.', '543-555-2013');
-
-INSERT INTO Payment_Information values(DEFAULT, '1234-4567-8900-0012', 1, 1);
-
-INSERT INTO Categories values(DEFAULT, 'Toy Guns');
-
-INSERT INTO Products values(DEFAULT, 'Super Nerf Blaster 9000', 20.00, 3);
-
 INSERT INTO products_categories_junction 
 values(1, 1);
 
 INSERT INTO Customer_Order values 
 (DEFAULT, now(), 1);
 
-INSERT INTO customer_order_product_association values(1, 1, 3);
+INSERT INTO customer_order_product_association values(DEFAULT, 1, 1, 3);
 
-SELECT * FROM Customer_Order;
+SELECT * FROM customer_order_product_association;
 */
 
 --SELECT * FROM products_categories_junction;

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 //you might have to use this. Quantity is included in this association table.
 @Entity
-@Table(name = "customer_order")
+@Table(name = "customer_order_product_association")
 public class CustomerOrderProductAssociation implements Serializable{
 
     @Id
@@ -15,9 +15,11 @@ public class CustomerOrderProductAssociation implements Serializable{
     private long customer_order_product_association_id;
 
     @ManyToOne
+    @JoinColumn(name = "customer_order_id")
     private CustomerOrder customer_order;
 
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Products products;
 
     @Column
