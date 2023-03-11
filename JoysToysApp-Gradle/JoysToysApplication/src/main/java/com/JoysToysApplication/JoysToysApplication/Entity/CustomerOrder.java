@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "Customer_Order", schema = "public")
+@Table(name = "customer_order", schema = "public")
 public class CustomerOrder {
 
     @Id
@@ -29,6 +31,13 @@ public class CustomerOrder {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "customerOrder")
     @JsonManagedReference
     private CustomerTransaction customerTransaction;
+
+
+
+    //CustomerOrder is the owner of the JoinTable CustomerOrderProductAssociation. One entity must be the owner.
+
+    @OneToMany(mappedBy = "customer_order")
+    private Set<CustomerOrderProductAssociation> orderedProductsSet = new HashSet<>();
 
     public CustomerOrder() {
 
@@ -71,5 +80,9 @@ public class CustomerOrder {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Set<CustomerOrderProductAssociation> getOrderedProductsSet() {
+        return orderedProductsSet;
     }
 }
