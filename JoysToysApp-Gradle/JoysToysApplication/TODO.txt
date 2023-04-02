@@ -1,12 +1,13 @@
 TODO:
 - Set up entities & repositories for the different tables in the backend(for the ones other than customer). Every table gets an entity, a repository, and possibly a controller. Then, in the controller, expose whatever APIs need to be exposed
 
-- research the 'one to many' and 'many to one' and 'many to many' relationships annotations in JPA
+- Fix Customer Order Product Association
+
 
 - 3 things that need to work:
     - Shop (no login required)
     - Login
-    - Make Purchases
+    - Make Purchases(Paypal SandBox. Check if other payment processors have one)
 
 - Shop
     - pull all products from backend. Then display them on the site
@@ -26,3 +27,6 @@ TODO:
 
 
 - Build the front end
+
+
+- Create File Server for imageURLs

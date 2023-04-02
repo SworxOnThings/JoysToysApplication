@@ -25,6 +25,17 @@ public class CustomerOrderProductAssociation implements Serializable{
     @Column
     private int quantity;
 
+    public CustomerOrderProductAssociation() {
+
+    }
+
+    public CustomerOrderProductAssociation(long customer_order_product_association_id, CustomerOrder customer_order, Products products, int quantity) {
+        this.customer_order_product_association_id = customer_order_product_association_id;
+        this.customer_order = customer_order;
+        this.products = products;
+        this.quantity = quantity;
+    }
+
     public int getQuantity() {
         return quantity;
     }

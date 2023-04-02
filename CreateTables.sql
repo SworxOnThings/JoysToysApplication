@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Customer_Order_Product_Association, Payment_information, Customer,Customer_Order, Customer_transactions, Categories, Products, Products_Categories_Junction, Suppliers, Delivery, Inventory_Order, Inventory_Transactions, Job_Role, Employee;
+DROP TABLE IF EXISTS Customer_Order_Product_Association, Payment_information, Customer,Customer_Order, Customer_transactions, Categories, Products, Suppliers, Delivery, Inventory_Order, Inventory_Transactions, Job_Role, Employee;
 
 CREATE TABLE Customer (
 	Customer_ID serial primary key,
@@ -37,7 +37,9 @@ CREATE TABLE Products (
 	Product_ID serial primary key,
 	Product_Name varchar(255),
 	Price numeric,
-	Product_Stock int
+	Product_Stock int,
+	ImageURL varchar(255),
+	category int references categories(category_id)
 );
 
 CREATE TABLE Customer_Order_Product_Association (
@@ -48,11 +50,6 @@ CREATE TABLE Customer_Order_Product_Association (
 	Quantity int
 );
 
-CREATE TABLE Products_Categories_Junction (
-	Category_ID int references Categories(Category_ID),
-	Product_ID int references Products(Product_ID),
-	PRIMARY KEY (Category_ID, Product_ID)
-);
 
 CREATE TABLE Suppliers (
 	Supplier_ID serial primary key,

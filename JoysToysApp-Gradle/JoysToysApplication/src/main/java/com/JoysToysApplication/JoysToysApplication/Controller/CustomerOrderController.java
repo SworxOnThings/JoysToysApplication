@@ -17,26 +17,17 @@ import java.util.Optional;
 @RestController
 public class CustomerOrderController {
 
-    @Autowired CustomerOrderRepository customerOrderRepository;
+    @Autowired
+    CustomerOrderRepository customerOrderRepository;
 
-    //NOT GOOD TO HAVE PRODUCT REPOSITORY HERE
-    @Autowired ProductsRepository productsRepository;
 
     @GetMapping("/customer_order/{id}")
-    public ResponseEntity<CustomerOrder> getCustomerOrder(@PathVariable("id")long id){
+    public ResponseEntity<CustomerOrder> getCustomerOrder(@PathVariable("id") long id) {
 
         Optional<CustomerOrder> customerOrder = customerOrderRepository.findById(id);
 
         return customerOrder.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    //THIS IS NOT GOOD FORM. You should NOT have the products repository in this controller. Instead create a service which handles the repository stuff
-//    @PutMapping("/{customer_order_id}/products/{product_id}")
-//    CustomerOrder orderProducts(
-//            @PathVariable long customer_order_id,
-//            @PathVariable long product_id)
-//    {
-//        CustomerOrder customerOrder = customerOrderRepository.getOne(customer_order_id);
-//        Products products = productsRepository.getOne(product_id);
-//    }
 }
+

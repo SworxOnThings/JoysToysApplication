@@ -1,0 +1,11 @@
+<label for="name">Name:</label>
+<input #name id="name">
+<label for="message">Message:</label>
+<input #message id="message">
+<button type="button" (click)="addMessage(name.value, message.value)">Submit</button>
+
+<ul>
+  <li *ngFor="let message of messages" >
+    {{message | json}}
+  </li>
+</ul>
