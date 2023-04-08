@@ -14,11 +14,12 @@ public class CustomerOrderProductAssociation implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long customer_order_product_association_id;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = CustomerOrder.class, optional = false)
     @JoinColumn(name = "customer_order_id")
     private CustomerOrder customer_order;
 
-    @ManyToOne
+
+    @ManyToOne(targetEntity = Products.class, optional = false)
     @JoinColumn(name = "product_id")
     private Products products;
 
@@ -40,8 +41,8 @@ public class CustomerOrderProductAssociation implements Serializable{
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public Products getProducts() {
+        return products;
     }
 
 

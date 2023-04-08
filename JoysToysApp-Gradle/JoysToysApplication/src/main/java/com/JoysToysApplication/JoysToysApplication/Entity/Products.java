@@ -36,9 +36,6 @@ public class Products implements Serializable {
     @Column
     private int product_stock;
 
-    public String getImageURL() {
-        return imageURL;
-    }
 
     @Column
     private String imageURL;
@@ -88,30 +85,34 @@ public class Products implements Serializable {
         return category;
     }
 
-    public Set<CustomerOrderProductAssociation> getOrderedProductsSet() {
-        return customerOrders;
+    public String getImageURL() {
+        return imageURL;
     }
 
+//    public Set<CustomerOrderProductAssociation> getOrderedProductsSet() {
+//        return customerOrders;
+//    }
 
-    public void setProduct_id(long product_id) {
-        this.product_id = product_id;
-    }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public void setProduct_stock(int product_stock) {
-        this.product_stock = product_stock;
-    }
-
-    public void setCustomerOrders(Set<CustomerOrderProductAssociation> customerOrders) {
-        this.customerOrders = customerOrders;
-    }
+//    public void setProduct_id(long product_id) {
+//        this.product_id = product_id;
+//    }
+//
+//    public void setProduct_name(String product_name) {
+//        this.product_name = product_name;
+//    }
+//
+//    public void setPrice(BigDecimal price) {
+//        this.price = price;
+//    }
+//
+//    public void setProduct_stock(int product_stock) {
+//        this.product_stock = product_stock;
+//    }
+//
+//    public void setCustomerOrders(Set<CustomerOrderProductAssociation> customerOrders) {
+//        this.customerOrders = customerOrders;
+//    }
 
     @Override
     public boolean equals(Object o) {

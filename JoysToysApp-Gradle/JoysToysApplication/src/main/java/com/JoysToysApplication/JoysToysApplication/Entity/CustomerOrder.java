@@ -35,7 +35,7 @@ public class CustomerOrder {
 
 
     //CustomerOrder is the owner of the JoinTable CustomerOrderProductAssociation. One entity must be the owner.
-    @OneToMany(mappedBy = "customer_order")
+    @OneToMany(mappedBy = "customer_order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CustomerOrderProductAssociation> orderedProductsSet = new HashSet<>();
 
     public CustomerOrder() {
