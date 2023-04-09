@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,5 +23,12 @@ public class ProductsController {
         Optional<Products> products = productsRepository.findById(id);
 
         return products.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/products")
+    public ResponseEntity<List<Products>> getAllProducts(){
+        List<Products> products = productsRepository.findAll();
+
+        return ResponseEntity.ok(products);
     }
 }

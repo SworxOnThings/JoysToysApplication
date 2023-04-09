@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,5 +24,12 @@ public class CategoriesController {
         Optional<Categories> category = categoriesRepository.findById(id);
 
         return category.map(ResponseEntity::ok).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/categories")
+    public ResponseEntity<List<Categories>> getAllCategories(){
+        List<Categories> categoriesList = categoriesRepository.findAll();
+
+        return ResponseEntity.ok(categoriesList);
     }
 }

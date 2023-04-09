@@ -4,9 +4,12 @@ TODO:
 - Fix Customer Order Product Association
  - the Customer Order needs to contain the set that will contain the product and the   quantity ordered *FIXED*
 
-- The relationship between Inventory Order and Products needs to be a Many to Many relationship
+- Create File server for images for the database
 
 - Create API for Deliveries from Specific Suppliers
+
+- Create API for all Products
+
 
 
 - 3 things that need to work:

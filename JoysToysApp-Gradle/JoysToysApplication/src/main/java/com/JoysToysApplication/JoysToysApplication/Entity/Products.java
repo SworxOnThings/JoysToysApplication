@@ -92,7 +92,7 @@ public class Products implements Serializable {
     public Set<CustomerOrderProductAssociation> getCustomerOrders() {
         return customerOrders;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
