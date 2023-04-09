@@ -2,7 +2,11 @@ TODO:
 - Set up entities & repositories for the different tables in the backend(for the ones other than customer). Every table gets an entity, a repository, and possibly a controller. Then, in the controller, expose whatever APIs need to be exposed
 
 - Fix Customer Order Product Association
- - the Customer Order needs to contain the set that will contain the product and the   quantity ordered
+ - the Customer Order needs to contain the set that will contain the product and the   quantity ordered *FIXED*
+
+- The relationship between Inventory Order and Products needs to be a Many to Many relationship
+
+- Create API for Deliveries from Specific Suppliers
 
 
 - 3 things that need to work:

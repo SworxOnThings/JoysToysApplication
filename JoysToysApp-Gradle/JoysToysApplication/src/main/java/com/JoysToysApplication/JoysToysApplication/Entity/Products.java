@@ -1,9 +1,6 @@
 package com.JoysToysApplication.JoysToysApplication.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -53,6 +50,9 @@ public class Products implements Serializable {
     private Categories category;
 
 
+    @OneToMany(mappedBy = "products")
+    private Set<RestockingLogistics> inventoryOrder = new HashSet<>();
+
     public Products() {
 
     }
@@ -89,31 +89,10 @@ public class Products implements Serializable {
         return imageURL;
     }
 
-//    public Set<CustomerOrderProductAssociation> getOrderedProductsSet() {
-//        return customerOrders;
-//    }
-
-
-//    public void setProduct_id(long product_id) {
-//        this.product_id = product_id;
-//    }
-//
-//    public void setProduct_name(String product_name) {
-//        this.product_name = product_name;
-//    }
-//
-//    public void setPrice(BigDecimal price) {
-//        this.price = price;
-//    }
-//
-//    public void setProduct_stock(int product_stock) {
-//        this.product_stock = product_stock;
-//    }
-//
-//    public void setCustomerOrders(Set<CustomerOrderProductAssociation> customerOrders) {
-//        this.customerOrders = customerOrders;
-//    }
-
+    public Set<CustomerOrderProductAssociation> getCustomerOrders() {
+        return customerOrders;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

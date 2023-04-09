@@ -15,6 +15,9 @@ public class PaymentInformation {
     @Column
     private String credit_card_number;
 
+    public static final int CARD_PAYMENT = 1;
+    public static final int CASH_PAYMENT = 2;
+
     //kind refers to "kind of payment"
     @Column
     private int kind;
@@ -22,6 +25,10 @@ public class PaymentInformation {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long customer_id;
+
+    public Customer getCustomer() {
+        return customer;
+    }
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", insertable = false, updatable = false)
@@ -55,20 +62,5 @@ public class PaymentInformation {
         return customer_id;
     }
 
-    public void setPayment_information_id(long payment_information_id) {
-        this.payment_information_id = payment_information_id;
-    }
-
-    public void setCredit_card_number(String credit_card_number) {
-        this.credit_card_number = credit_card_number;
-    }
-
-    public void setKind(int kind) {
-        this.kind = kind;
-    }
-
-    public void setCustomer_id(long customer_id) {
-        this.customer_id = customer_id;
-    }
 
 }

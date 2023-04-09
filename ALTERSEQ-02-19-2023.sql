@@ -19,3 +19,5 @@ ALTER SEQUENCE job_role_job_id_seq RESTART WITH 1;
 ALTER SEQUENCE products_product_id_seq RESTART WITH 1;
 
 ALTER SEQUENCE suppliers_supplier_id_seq RESTART WITH 1;
+
+ALTER SEQUENCE restocking_logistics_restocking_logistics_id_seq RESTART WITH 1;

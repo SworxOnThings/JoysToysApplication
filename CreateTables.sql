@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Customer_Order_Product_Association, Payment_information, Customer,Customer_Order, Customer_transactions, Categories, Products, Suppliers, Delivery, Inventory_Order, Inventory_Transactions, Job_Role, Employee;
+DROP TABLE IF EXISTS Customer_Order_Product_Association, Payment_information, Customer,Customer_Order, Customer_transactions, Categories, Products, Suppliers, Delivery, Inventory_Order, Inventory_Transactions, Restocking_Logistics, Job_Role, Employee;
 
 CREATE TABLE Customer (
 	Customer_ID serial primary key,
@@ -63,13 +63,14 @@ CREATE TABLE Inventory_Order (
 	Inventory_Order_ID serial primary key,
 	Inventory_Order_date TIMESTAMP WITH TIME ZONE NOT NULL,
 	PurchasingPricePerUnit numeric,
-	Quantity int,
-	Product_ID int references Products(Product_ID)
+	Product_ID int references Products(Product_ID),
+	Supplier_ID int references Suppliers(supplier_id)
 );
 
 CREATE TABLE Delivery (
 	Delivery_ID serial primary key,
-	Delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
+	Expected_Delivery_date TIMESTAMP WITH TIME ZONE NOT NULL,
+	Arrival_date TIMESTAMP WITH TIME ZONE NOT NULL,
 	Inventory_Order_ID int references Inventory_Order(Inventory_Order_ID),
 	Supplier_ID int references Suppliers(Supplier_ID)
 );
@@ -78,6 +79,14 @@ CREATE TABLE Inventory_Transactions (
 	Transaction_ID serial primary key,
 	Amount_paid numeric,
 	Inventory_Order_ID int references Inventory_Order(Inventory_Order_ID)
+);
+
+CREATE TABLE Restocking_Logistics (
+	restocking_logistics_id serial primary key,
+	product_id int references Products(product_id),
+	inventory_order_id int references inventory_order(inventory_order_id),
+	UNIQUE(product_id, inventory_order_id),
+	quantity int
 );
 
 CREATE TABLE Job_Role (
