@@ -1,4 +1,8 @@
+import { useState } from "react"
+
 export default function Product({product, handleDelete}){
+    let [imageURL, setImageURL] = useState(product.imageurl);
+
     return(
         <div>
             <h6>
@@ -7,6 +11,10 @@ export default function Product({product, handleDelete}){
             <div>
                 {product.price}
             </div>
+            <div>
+                <img src= {product.imageURL} alt="" width="auto" height="200"/>
+            </div>    
+            
             <button onClick={()=>handleDelete(product.product_id)}>Delete</button>
         </div>
     )
