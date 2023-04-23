@@ -16,8 +16,8 @@ public class Categories implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long category_id;
 
-    @Column
-    private String category_name;
+    @Column(name = "category_name")
+    private String categoryName;
 
 
     @Transient
@@ -28,39 +28,30 @@ public class Categories implements Serializable {
 
     }
 
-    public Categories(long category_id, String category_name, Set<Products> productsSet) {
+    public Categories(long category_id, String categoryName, Set<Products> productsSet) {
         this.category_id = category_id;
-        this.category_name = category_name;
+        this.categoryName = categoryName;
     }
 
     public long getCategory_id() {
         return category_id;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String getCategoryName() {
+        return categoryName;
     }
-
-
-    public void setCategory_id(long category_id) {
-        this.category_id = category_id;
-    }
-
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
-    }
-
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Categories that)) return false;
-        return category_id == that.category_id && Objects.equals(category_name, that.category_name);
+        return getCategory_id() == that.getCategory_id() && Objects.equals(getCategoryName(), that.getCategoryName()) && Objects.equals(jsonNode, that.jsonNode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(category_id, category_name);
+        return Objects.hash(getCategory_id(), getCategoryName(), jsonNode);
     }
+
 }

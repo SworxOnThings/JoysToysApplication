@@ -2,7 +2,9 @@ TODO:
 - Set up entities & repositories for the different tables in the backend(for the ones other than customer). Every table gets an entity, a repository, and possibly a controller. Then, in the controller, expose whatever APIs need to be exposed
 
 - Create File Server for imageURLs in database
-    - Done using apache
+    - *Done using apache*
+
+- Configure routing for different webpages for specific product categories in React
 
 - Create API for Deliveries from Specific Suppliers
 

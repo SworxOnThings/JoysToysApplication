@@ -1,13 +1,13 @@
 package com.JoysToysApplication.JoysToysApplication.Controller;
 
+import com.JoysToysApplication.JoysToysApplication.Entity.Categories;
 import com.JoysToysApplication.JoysToysApplication.Entity.Products;
 import com.JoysToysApplication.JoysToysApplication.Repository.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,4 +31,15 @@ public class ProductsController {
 
         return ResponseEntity.ok(products);
     }
+
+
+    @GetMapping("/products/product_category")
+    public ResponseEntity<List<Products>> getProductsByCategory(@RequestParam("CategoryName") String category){
+        List<Products> products = productsRepository.findByCategoryCategoryName(category);
+
+        return ResponseEntity.ok(products);
+    }
+
+
+
 }
