@@ -1,5 +1,6 @@
 package com.JoysToysApplication.JoysToysApplication.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -11,11 +12,15 @@ import java.util.Objects;
 public class CustomerOrderProductAssociation implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.customer_order_product_associ_customer_order_product_associ_seq")
+    @SequenceGenerator(name = "public.customer_order_product_associ_customer_order_product_associ_seq", sequenceName = "public.customer_order_product_associ_customer_order_product_associ_seq", allocationSize = 1)
     private long customer_order_product_association_id;
+
+
 
     @ManyToOne(targetEntity = CustomerOrder.class, optional = false)
     @JoinColumn(name = "customer_order_id")
+    @JsonIgnore
     private CustomerOrder customer_order;
 
 
@@ -43,6 +48,23 @@ public class CustomerOrderProductAssociation implements Serializable{
 
     public Products getProducts() {
         return products;
+    }
+
+
+    public void setCustomer_order_product_association_id(long customer_order_product_association_id) {
+        this.customer_order_product_association_id = customer_order_product_association_id;
+    }
+
+    public void setCustomer_order(CustomerOrder customer_order) {
+        this.customer_order = customer_order;
+    }
+
+    public void setProducts(Products products) {
+        this.products = products;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
 

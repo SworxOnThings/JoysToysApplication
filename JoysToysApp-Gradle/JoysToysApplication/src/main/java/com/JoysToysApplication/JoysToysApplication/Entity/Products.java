@@ -89,9 +89,6 @@ public class Products implements Serializable {
         return imageURL;
     }
 
-    public Set<CustomerOrderProductAssociation> getCustomerOrders() {
-        return customerOrders;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -5,12 +5,13 @@ TODO:
     - *Done using apache*
 
 - Configure routing for different webpages for specific product categories in React
+ - *configured for action figures only. Follow this model for other pages*
 
 - Create API for Deliveries from Specific Suppliers
 
-- Create API for all Products
+- Create API which gives the most popular products
 
-
+- Attach customer_id to specific account for specific customers
 
 - 3 things that need to work:
     - Shop (no login required)

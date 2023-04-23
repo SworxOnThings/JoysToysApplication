@@ -1,4 +1,5 @@
 package com.JoysToysApplication.JoysToysApplication.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class Customer {
     private List<PaymentInformation> paymentInformationList = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<CustomerOrder> customerOrderList = new ArrayList<>();
 
     public Customer() {

@@ -3,4 +3,5 @@ INSERT INTO Customer(customer_id, name, email, address, phonenumber) values(DEFA
 INSERT INTO Customer_Order(customer_order_id, customer_order_date, customer_id) 
 values(DEFAULT, now(), 1);
 */
+
 select * from customer_order;

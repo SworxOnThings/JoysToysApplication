@@ -13,7 +13,8 @@ import java.util.Set;
 public class CustomerOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.customer_order_customer_order_id_seq")
+    @SequenceGenerator(name = "public.customer_order_customer_order_id_seq", sequenceName = "public.customer_order_customer_order_id_seq", allocationSize = 1)
     private long customer_order_id;
 
     @Column
@@ -79,9 +80,15 @@ public class CustomerOrder {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+        setCustomer_id(customer.getCustomer_id());
     }
 
     public Set<CustomerOrderProductAssociation> getOrderedProductsSet() {
         return orderedProductsSet;
     }
+
+    public void addAssociation(CustomerOrderProductAssociation order){
+        orderedProductsSet.add(order);
+    }
+
 }

@@ -1,0 +1,1 @@
+--SELECT * FROM products inner join categories on products.category = categories.category_id where categories.category_name = 'Action_Figures';
