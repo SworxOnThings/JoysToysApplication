@@ -7,9 +7,7 @@ import { useState } from 'react';
 export default function ActionFigures(){
 
     const [Action_Figures, setAction_Figures] = useState([]);
-
-
-    
+ 
     useEffect(() => {
     fetch('/products/product_category?CategoryName=Action_Figures', {
         //if method left out, then react defaults to GET request

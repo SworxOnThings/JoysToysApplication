@@ -29,6 +29,14 @@ public class Customer {
     @Column(name = "phonenumber")
     private String phonenumber;
 
+    @Column(name = "username")
+    private String username;
+
+
+
+    @Column(name = "password", columnDefinition = "bytea")
+    private byte[] passwordHash;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
     private List<PaymentInformation> paymentInformationList = new ArrayList<>();
 
@@ -40,12 +48,16 @@ public class Customer {
 
     }
 
-    public Customer(long id, String name, String email, String address, String phonenumber) {
-        this.customer_id = id;
+    public Customer(long customer_id, String name, String email, String address, String phonenumber, String username, byte[] passwordHash, List<PaymentInformation> paymentInformationList, List<CustomerOrder> customerOrderList) {
+        this.customer_id = customer_id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.phonenumber = phonenumber;
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.paymentInformationList = paymentInformationList;
+        this.customerOrderList = customerOrderList;
     }
 
     public long getCustomer_id() {
@@ -66,6 +78,16 @@ public class Customer {
 
     public String getPhonenumber() {
         return phonenumber;
+    }
+
+    @JsonIgnore
+    public String getUsername() {
+        return username;
+    }
+
+    @JsonIgnore
+    public byte[] getPasswordHash() {
+        return passwordHash;
     }
 
     public void setCustomer_id(long id) {

@@ -46,6 +46,8 @@ function Home() {
     return (
       <div>
         <h1 class="App-Header">Joys Toys</h1>
+        <form></form>
+        <button ></button>
         <ol>Categories</ol>
         {categories.map(category => <li><Link to={category.categoryName}>{category.categoryName}</Link></li>)}
         <h1>Best Sellers</h1>

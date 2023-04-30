@@ -14,12 +14,10 @@ TODO:
 - Attach customer_id to specific account for specific customers
 
 - 3 things that need to work:
-    - Shop (no login required)
+    - Shop
     - Login
     - Make Purchases(Paypal SandBox. Check if other payment processors have one)
 
-- Shop
-    - pull all products from backend. Then display them on the site
 
 - Login
     - create login portal
