@@ -36,3 +36,5 @@ TODO:
 - Build the front end
 
 
+- Make authentication more secure
+ - change the password from plaintext

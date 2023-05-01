@@ -29,6 +29,7 @@ function Home() {
   
   
     }, [])
+    
     function handleDelete(id) {
       let index = products.findIndex(product => product.product_id == id)
       products.splice(index, 1)
@@ -46,8 +47,9 @@ function Home() {
     return (
       <div>
         <h1 class="App-Header">Joys Toys</h1>
-        <form></form>
-        <button ></button>
+        <Link to ='/CustomerLoginPage'>
+        <button align='right'>Login</button>
+        </Link>
         <ol>Categories</ol>
         {categories.map(category => <li><Link to={category.categoryName}>{category.categoryName}</Link></li>)}
         <h1>Best Sellers</h1>
