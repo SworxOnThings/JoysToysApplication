@@ -14,7 +14,8 @@ public class Customer {
 
     //auto-id
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.customer_customer_id_seq")
+    @SequenceGenerator(name = "public.customer_customer_id_seq", sequenceName = "public.customer_customer_id_seq", allocationSize = 1)
     private long customer_id;
 
     @Column(name = "name")
@@ -31,7 +32,6 @@ public class Customer {
 
     @Column(name = "username")
     private String username;
-
 
 
     @Column(name = "password", columnDefinition = "bytea")
@@ -108,5 +108,13 @@ public class Customer {
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public void setPasswordHash(byte[] passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

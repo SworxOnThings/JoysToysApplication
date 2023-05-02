@@ -20,10 +20,10 @@ TODO:
 
 
 - Login
-    - create login portal
+    - create login portal(part done)
+    - create registration(backend, frontend)
     - research how to do authentication in spring(OAUTH2 probably)
     - store login information(username, password hash, payment info, etc...)
-    - research what a bean is
 
 - Make Purchase
     - payment processor
