@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 
-export default function BarbieDolls(){
+export default function BabyDolls(){
 
-    const [Barbie_Dolls, setBarbie_Dolls] = useState([]);
+    const [Baby_Dolls, setBaby_Dolls] = useState([]);
 
     useEffect(() => {
-        fetch('/products/product_category?CategoryName=Barbie_Dolls', {
+        fetch('/products/product_category?CategoryName=Baby_Dolls', {
             //if method left out, then react defaults to GET request
             method: "GET", 
     
@@ -22,7 +22,7 @@ export default function BarbieDolls(){
         .then(Response => Response.json())
         .then(data => {
             console.log(data); 
-            setBarbie_Dolls(data);})
+            setBaby_Dolls(data);})
             .catch(error => console.error(error));
 
     }, [])    
@@ -30,7 +30,7 @@ export default function BarbieDolls(){
     return(
         <>
         <div>
-            { <div>{Barbie_Dolls && Barbie_Dolls.map(Barbie_Dolls => <Product product={Barbie_Dolls}/>)}</div> }
+            { <div>{Baby_Dolls && Baby_Dolls.map(Baby_Dolls => <Product product={Baby_Dolls}/>)}</div> }
         </div>
         </>
     );

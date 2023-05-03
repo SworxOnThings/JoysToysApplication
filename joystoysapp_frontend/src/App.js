@@ -5,6 +5,11 @@ import CustomerLoginPage from './CustomerLoginPage';
 import CustomerHomepage from './CustomerHomepage';
 import ActionFigures from './Action_Figures';
 import BarbieDolls from './Barbie_Dolls';
+import BabyDolls from './Baby_Dolls';
+import ToyGuns from './Toy_Guns';
+import ToyCars from './Toy_Cars';
+import Sports from './Sports';
+import ArtsCrafts from './Arts&Crafts';
 import { useState, useEffect } from 'react';
 import Product from './Product';
 import { Routes ,Route } from 'react-router-dom';
@@ -20,6 +25,11 @@ function App() {
        <Route path="/CustomerHomepage" element={<CustomerHomepage />} />
        <Route path="/Action_Figures" element={<ActionFigures />} />
        <Route path="/Barbie_Dolls" element={<BarbieDolls />} />
+       <Route path="/Baby_Dolls" element={<BabyDolls />} />
+       <Route path="/Toy_Guns" element={<ToyGuns />} />
+       <Route path="/Toy_Cars" element={<ToyCars />} />
+       <Route path="/Sports" element={<Sports />} />
+       <Route path="/Arts&Crafts" element={<ArtsCrafts />} />
     </Routes>
  </>
   );
