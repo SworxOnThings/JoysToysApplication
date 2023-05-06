@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -42,7 +43,11 @@ public class CustomerOrderController {
     public ResponseEntity<CustomerOrder> createCustomerOrder(@RequestBody CustomerOrderDTO customerOrderDTO){
         CustomerOrder customerOrder = new CustomerOrder();
 
-        CustomerOrderProductAssociation customerOrderProductAssociation = new CustomerOrderProductAssociation();
+
+
+        if(customerOrderDTO.getOrder().isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
 
         /*
         what the code below is:
@@ -52,22 +57,29 @@ public class CustomerOrderController {
          */
         customerRepository.findById(customerOrderDTO.getCustomer_id()).ifPresent(customerOrder::setCustomer);
 
+        for(Map.Entry<Long, Integer> entry : customerOrderDTO.getOrder().entrySet()){
+            CustomerOrderProductAssociation customerOrderProductAssociation = new CustomerOrderProductAssociation();
+
+            customerOrderProductAssociation.setQuantity(entry.getValue());
+
+
+            productsRepository.findById(entry.getKey()).ifPresent(customerOrderProductAssociation::setProducts);
+
+            customerOrderProductAssociation.setCustomer_order(customerOrder);
+
+            customerOrder.addAssociation(customerOrderProductAssociation);
+        }
+
         customerOrder.setCustomer_order_date(new Timestamp(System.currentTimeMillis()));
-
-        customerOrderProductAssociation.setQuantity(customerOrderDTO.getQuantity());
-
-
-        productsRepository.findById(customerOrderDTO.getProduct_id()).ifPresent(customerOrderProductAssociation::setProducts);
-
-        customerOrderProductAssociation.setCustomer_order(customerOrder);
-
-        customerOrder.addAssociation(customerOrderProductAssociation);
 
         customerOrder = customerOrderRepository.save(customerOrder);
 
 
         return ResponseEntity.status(HttpStatus.CREATED).body(customerOrder);
     }
+
+
+
 
 }
 

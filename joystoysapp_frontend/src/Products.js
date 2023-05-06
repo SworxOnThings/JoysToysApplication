@@ -2,14 +2,18 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Product from './Product';
 import { useState } from 'react';
+import { useParams, useNavigation } from 'react-router-dom';
+import Categories from './Categories';
 
 
-export default function ArtsCrafts(){
+export default function Products(){
 
-    const [Arts_Crafts, setArts_Crafts] = useState([]);
+    let {category} = useParams()
+
+    const [products, setProducts] = useState([]);
  
     useEffect(() => {
-    fetch('/products/product_category?CategoryName=Arts_Crafts', {
+    fetch(`/products/product_category?CategoryName=${category}`, {
         //if method left out, then react defaults to GET request
         method: "GET", 
 
@@ -22,16 +26,19 @@ export default function ArtsCrafts(){
     .then(Response => Response.json())
     .then(data => {
         console.log(data); 
-        setArts_Crafts(data);})
+        setProducts(data);})
         .catch(error => console.error(error));
 
 
-}, [])
+}, [category    ])
 
 
     return(
-        <div>
-            { <div>{Arts_Crafts && Arts_Crafts.map(Arts_Crafts => <Product product={Arts_Crafts}/>)}</div> }
+        <div className='row'>
+            <Categories />
+            <div className='productContainer'>
+                {products && products.map(product => <Product product={product}/>)}
+            </div>
         </div>
     );
 

@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Home';
 import CustomerLoginPage from './CustomerLoginPage';
 import CustomerHomepage from './CustomerHomepage';
+import Products from './Products';
 import ActionFigures from './Action_Figures';
 import BarbieDolls from './Barbie_Dolls';
 import BabyDolls from './Baby_Dolls';
@@ -23,13 +24,15 @@ function App() {
        <Route path="/" element={<Home />} />
        <Route path="/CustomerLoginPage" element={<CustomerLoginPage />} />
        <Route path="/CustomerHomepage" element={<CustomerHomepage />} />
-       <Route path="/Action_Figures" element={<ActionFigures />} />
+       <Route path="/category/:category" element={<Products />} />
+    {/*
        <Route path="/Barbie_Dolls" element={<BarbieDolls />} />
        <Route path="/Baby_Dolls" element={<BabyDolls />} />
        <Route path="/Toy_Guns" element={<ToyGuns />} />
        <Route path="/Toy_Cars" element={<ToyCars />} />
        <Route path="/Sports" element={<Sports />} />
-       <Route path="/Arts&Crafts" element={<ArtsCrafts />} />
+       <Route path="/Arts_Crafts" element={<ArtsCrafts />} />
+  */}
     </Routes>
  </>
   );

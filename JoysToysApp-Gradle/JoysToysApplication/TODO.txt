@@ -11,7 +11,7 @@ TODO:
 
 - Create API which gives the most popular products
 
-- Attach customer_id to specific account for specific customers
+- Attach customer_id to specific account for specific customers - DONE
 
 - 3 things that need to work:
     - Shop
@@ -22,18 +22,17 @@ TODO:
 - Login
     - create login portal(part done)
     - create registration(backend, frontend) *DONE FOR BACKEND ONLY*
-    - research how to do authentication in spring(OAUTH2 probably)
-    - store login information(username, password hash, payment info, etc...)
 
 - Make Purchase
     - payment processor
     - generate a receipt
-    - decrement stock in backend
+    - decrement stock in backend/database
     - send receipt to user
     - display receipt/purchasing information to user
 
 
-- Build the front end
+- Create customer and employee homepage
+ - employee homepage will have the option to view inventory
 
 
 - Make authentication more secure
