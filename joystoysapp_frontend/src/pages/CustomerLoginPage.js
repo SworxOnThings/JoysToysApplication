@@ -1,26 +1,10 @@
-import './App.css';
 import { useNavigate } from 'react-router-dom';
-import React, { createContext, useState } from 'react';
-import { useContext } from 'react';
-
-export const UserContext = createContext(null);
-
-export const UserProvider = ({ children }) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-  
-    return (
-      <UserContext.Provider value={{ username, setUsername, password, setPassword }}>
-        {children}
-      </UserContext.Provider>
-    );
-  };
-  
+import { useContextHook } from '../context';  
 
 function CustomerLoginPage() {
     const navigate = useNavigate();
 
-    const { username, setUsername, password, setPassword } = useContext(UserContext);  
+    const { username, setUsername, password, setPassword } = useContextHook();  
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -32,7 +16,17 @@ function CustomerLoginPage() {
     setPassword(event.target.value);
     };
   
-    const handleLogin = () => {
+    const handleLogin = (event) => {
+      event.preventDefault()
+      fetch("/login",{
+        method: "POST",
+        headers:{
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          login: username, password
+        })
+      })
 
       navigate('/CustomerHomepage');
     };

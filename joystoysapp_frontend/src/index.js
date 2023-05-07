@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './styles/index.css';
 import App from './App';
-import Counter from './Counter'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { UserProvider } from './CustomerLoginPage';
+import { UserProvider } from './context';
+import ShopComponent from './pages/ShopComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserProvider>
-    <BrowserRouter>
-      <App />
+    <BrowserRouter>  
+    <ShopComponent>
+        <App />
+    </ShopComponent>
     </BrowserRouter>
     </UserProvider>
   </React.StrictMode>

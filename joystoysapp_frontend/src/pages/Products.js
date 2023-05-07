@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import './App.css';
-import Product from './Product';
+import Product from '../components/Product';
 import { useState } from 'react';
 import { useParams, useNavigation } from 'react-router-dom';
-import Categories from './Categories';
+import Categories from '../components/Categories';
 
 
 export default function Products(){

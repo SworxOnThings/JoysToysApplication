@@ -1,15 +1,14 @@
-import './App.css';
+
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContextHook } from '../context';
 import React, { useState, useEffect } from 'react';
-import { UserContext } from './CustomerLoginPage';
 
 
 export default function CustomerHomepage(){
 
-    const { username, password} = useContext(UserContext);
+    const { username, password, customer, setCustomer} = useContextHook();
 
-    const [customer, setCustomer] = useState({});
+
     useEffect(() => {
     
     const basicAuth = 'Basic ' + btoa(username + ':' + password);

@@ -1,8 +1,9 @@
 import { useState } from "react"
-import Home from "./Home";
+import { useContextHook } from "../context";
 
-export default function Product({product, handleDelete, addItem}){
+export default function Product({product}){
     let [imageURL, setImageURL] = useState(product.imageurl);
+    let { handleDelete, addItem } = useContextHook();
 
     return(
         <div className="card">
@@ -17,7 +18,7 @@ export default function Product({product, handleDelete, addItem}){
             </div>
             
             <button onClick={()=>handleDelete(product.product_id)}>Delete</button>
-            <button onClick={ () => addItem(this) }>Add to Cart</button>
+            <button onClick={ () => addItem(product) }>Add to Cart</button>
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import './App.css';
+
 import { useState, useEffect } from 'react';
-import Product from './Product';
+
 import { Link } from 'react-router-dom';
 
 function Categories() {
