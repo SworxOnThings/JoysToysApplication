@@ -10,23 +10,21 @@ import java.math.BigDecimal;
 public class CustomerTransaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "public.customer_transactions_customer_transaction_id_seq")
+    @SequenceGenerator(name = "public.customer_transactions_customer_transaction_id_seq", sequenceName = "public.customer_transactions_customer_transaction_id_seq", allocationSize = 1)
     private long customer_transaction_id;
 
     //data type in PostgreSQL is 'numeric'
     @Column
     private java.math.BigDecimal amount_paid;
 
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long customer_order_id;
 
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long payment_information_id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_order_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_order_id")
     @JsonBackReference
     private CustomerOrder customerOrder;
 
@@ -34,10 +32,8 @@ public class CustomerTransaction {
 
     }
 
-    public CustomerTransaction(long customer_transaction_id, BigDecimal amount_paid, long customer_order_id, long payment_information_id, CustomerOrder customerOrder) {
-        this.customer_transaction_id = customer_transaction_id;
+    public CustomerTransaction(BigDecimal amount_paid, long payment_information_id, CustomerOrder customerOrder) {
         this.amount_paid = amount_paid;
-        this.customer_order_id = customer_order_id;
         this.payment_information_id = payment_information_id;
         this.customerOrder = customerOrder;
     }
@@ -50,9 +46,6 @@ public class CustomerTransaction {
         return amount_paid;
     }
 
-    public long getCustomer_order_id() {
-        return customer_order_id;
-    }
 
     public long getPayment_information_id() {
         return payment_information_id;
@@ -70,9 +63,6 @@ public class CustomerTransaction {
         this.amount_paid = amount_paid;
     }
 
-    public void setCustomer_order_id(long customer_order_id) {
-        this.customer_order_id = customer_order_id;
-    }
 
     public void setPayment_information_id(long payment_information_id) {
         this.payment_information_id = payment_information_id;

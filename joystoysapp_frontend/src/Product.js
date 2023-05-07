@@ -1,6 +1,7 @@
 import { useState } from "react"
+import Home from "./Home";
 
-export default function Product({product, handleDelete}){
+export default function Product({product, handleDelete, addItem}){
     let [imageURL, setImageURL] = useState(product.imageurl);
 
     return(
@@ -16,6 +17,7 @@ export default function Product({product, handleDelete}){
             </div>
             
             <button onClick={()=>handleDelete(product.product_id)}>Delete</button>
+            <button onClick={ () => addItem(this) }>Add to Cart</button>
         </div>
     )
 }

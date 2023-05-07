@@ -29,6 +29,7 @@ public class CustomerOrder {
     @JsonIgnoreProperties("customerOrderList")
     private Customer customer;
 
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "customerOrder")
     @JsonManagedReference
     private CustomerTransaction customerTransaction;
@@ -89,6 +90,14 @@ public class CustomerOrder {
 
     public void addAssociation(CustomerOrderProductAssociation order){
         orderedProductsSet.add(order);
+    }
+
+    public CustomerTransaction getCustomerTransaction() {
+        return customerTransaction;
+    }
+
+    public void setCustomerTransaction(CustomerTransaction customerTransaction) {
+        this.customerTransaction = customerTransaction;
     }
 
 }

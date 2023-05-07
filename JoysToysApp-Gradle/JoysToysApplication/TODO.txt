@@ -26,7 +26,7 @@ TODO:
 - Make Purchase
     - payment processor
     - generate a receipt
-    - decrement stock in backend/database
+    - check to see if we have necessary stock. If so, decrement stock in backend/database
     - send receipt to user
     - display receipt/purchasing information to user
 
@@ -37,3 +37,9 @@ TODO:
 
 - Make authentication more secure
  - change the password from plaintext
+
+- Prevent shopping cart items from disappearing when page is refreshed
+
+- implement add to cart functionality, cart page, and checkout page
+
+- check if customer_id in payment_information matches with the customer. If not, throw them out
