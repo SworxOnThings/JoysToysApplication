@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Base64;
 
 @Service
 public class CustomerService implements UserDetailsService{
+
+
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -32,4 +33,10 @@ public class CustomerService implements UserDetailsService{
         return new org.springframework.security.core.userdetails.User(
                 customer.getUsername(), passwordHash, new ArrayList<>());
     }
+
+
+    public BCryptPasswordEncoder getPasswordEncoder() {
+        return passwordEncoder;
+    }
+
 }

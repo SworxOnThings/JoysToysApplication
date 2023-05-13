@@ -22,6 +22,8 @@ TODO:
 - Login
     - create login portal(part done)
     - create registration(backend, frontend) *DONE FOR BACKEND ONLY*
+    - OAuth2.0 provides access to resources - this might not be what you think it is
+    - continue building JWT authentication stuff
 
 - Make Purchase
     - payment processor
