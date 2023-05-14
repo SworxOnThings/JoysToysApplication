@@ -1,18 +1,28 @@
 package com.JoysToysApplication.JoysToysApplication.Controller;
+import com.JoysToysApplication.JoysToysApplication.Config.JwtTokenUtil;
+import com.JoysToysApplication.JoysToysApplication.DTO.AuthToken;
 import com.JoysToysApplication.JoysToysApplication.DTO.CustomerDTO;
+import com.JoysToysApplication.JoysToysApplication.DTO.LoginCustomerDTO;
 import com.JoysToysApplication.JoysToysApplication.Repository.CustomerRepository;
 import com.JoysToysApplication.JoysToysApplication.Entity.Customer;
+import com.JoysToysApplication.JoysToysApplication.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.naming.AuthenticationException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Optional;
+
+import static com.JoysToysApplication.JoysToysApplication.DTO.AuthToken.createGarbageAuthToken;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -20,6 +30,31 @@ public class CustomerController {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private CustomerService customerService;
+
+
+    @RequestMapping(value = "/customer/token", method = RequestMethod.POST)
+    public ResponseEntity<AuthToken> refreshToken(@RequestBody LoginCustomerDTO loginCustomerDTO) throws AuthenticationException {
+
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginCustomerDTO.getUsername(), loginCustomerDTO.getPassword()));
+        final Optional<Customer> customer = customerRepository.findByUsername(loginCustomerDTO.getUsername());
+        if(customer.isEmpty()){
+            AuthToken garbageAuthToken = createGarbageAuthToken(); // Create a "garbage" AuthToken or return a default one
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(garbageAuthToken);
+        }
+
+        final String token = jwtTokenUtil.generateToken(customer.get());
+        return ResponseEntity.ok(new AuthToken(token, customer.get().getUsername()));
+    }
 
     //This is a PATH variable
     @GetMapping("/customer/{id}")

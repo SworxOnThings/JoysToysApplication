@@ -36,7 +36,7 @@ public class SecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests(
-                        (authz) -> authz.requestMatchers("/products/**", "/categories/**", "/customer/registration")
+                        (authz) -> authz.requestMatchers("/products/**", "/categories/**", "/customer/registration", "/customer/token")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
