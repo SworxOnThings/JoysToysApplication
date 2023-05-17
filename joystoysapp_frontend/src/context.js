@@ -1,5 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useContext } from "react";
+import useCookies from "react-cookie/cjs/useCookies";
 
 export const UserContext = createContext(null);
 export const useContextHook = () => useContext(UserContext);
@@ -7,11 +8,17 @@ export const useContextHook = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [cookies, setCookies] = useCookies();
 
+  const [token, setToken] = useState(null);
   const [items, setItems] = useState([]);
   const [quantities, setQuantities] = useState([]);
 
   const [customer, setCustomer] = useState({});
+  useEffect(() => {
+    setToken(cookies.token)
+    setUsername(cookies.username)
+  }, [cookies])
 
   function addItem(item) {
     const index = items.indexOf(item);
@@ -72,7 +79,9 @@ export const UserProvider = ({ children }) => {
         removeItem,
         calculateTotal,
         customer, 
-        setCustomer
+        setCustomer,
+        token,
+        setToken
       }}
     >
       {children}

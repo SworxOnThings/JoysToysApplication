@@ -6,6 +6,7 @@ import CustomerHomepage from './pages/CustomerHomepage';
 import Products from './pages/Products';
 import { Routes ,Route } from 'react-router-dom';
 import Checkout from './pages/Checkout';
+import CustomerOrder from './pages/CustomerOrder'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
        <Route path="/Login" element={<CustomerLoginPage />} />
        <Route path="/CustomerHomepage" element={<CustomerHomepage />} />
        <Route path="/category/:category" element={<Products />} />
+       <Route path="/order/:orderID" element={<CustomerOrder />} />
        
        <Route path="/checkout" element={<Checkout />} />
     </Routes>

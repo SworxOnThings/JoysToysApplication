@@ -27,7 +27,7 @@ function Home() {
         <img alt="JoysToysLogo" src={JoysToysLogo} width="200px" />
         </div>
       </h1>
-      <Link to="/CustomerLoginPage">
+      <Link to="/Login">
         <button className="loginButton">Login</button>
       </Link>
       <Categories />
